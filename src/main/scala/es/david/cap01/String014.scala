@@ -27,5 +27,7 @@ object String014 extends App
   
   // podemos usar como en C con el formateo de variables
   println(s"%s tendra %d y un peso de ${peso - 10} kg.\n".format(nombre, edad))
+  
+  printf(s"%s tendra %d y un peso de ${peso - 10} kg.\n".format(nombre, edad))
 }
 case class Estudiante(nombre: String , nota: Double)
