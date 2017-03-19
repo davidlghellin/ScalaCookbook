@@ -1,4 +1,10 @@
 /bin/
+/target/
+/.worksheet/
+/project/
 *.class
 *.cache
-/target/
+*.prefs
+.classpath
+.cache-main
+.project
