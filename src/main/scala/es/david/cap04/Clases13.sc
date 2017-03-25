@@ -23,7 +23,34 @@ object Clases13 {
   p.diHola                                        //> guau
   val g = new Gato("katy")                        //> g  : es.david.cap04.Clases13.Gato = yo digo miau, y tengo 2 anyos
   g.diHola                                        //> miau
-  
-  
+
   // cuando defines un campo en una clase abstracta o trait, el compilador de Scala , solo generara lso metodos asociados a var o val
+
+  ///////////////////
+  // tenemos que eliminar el uso de null, para ello tenemos los Option
+  trait Animal {
+    val greeting: Option[String]
+    var age: Option[Int] = None
+    override def toString = s"I say $greeting, and I'm $age years old."
+  }
+  class Dog extends Animal {
+    val greeting = Some("Woof")
+    age = Some(2)
+  }
+
+  class DogNull extends Animal {
+    val greeting = Some("Woof")
+  }
+  val d = new Dog                                 //> d  : es.david.cap04.Clases13.Dog = I say Some(Woof), and I'm Some(2) years 
+                                                  //| old.
+  println(d)                                      //> I say Some(Woof), and I'm Some(2) years old.
+ 
+ 
+  val dNull = new DogNull                         //> dNull  : es.david.cap04.Clases13.DogNull = I say Some(Woof), and I'm None y
+                                                  //| ears old.
+
+  // como podemos ver tenemos no dara error de NullPointer
+  println(dNull)                                  //> I say Some(Woof), and I'm None years old.
+  println(dNull.age)                              //> None
+  if(dNull.age == None) println("Es none")        //> Es none
 }
