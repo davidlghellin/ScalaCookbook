@@ -1,0 +1,20 @@
+Queremos detener a uno o a mas actores de Akka, las mas comunes son:
+ - system.stop(actorRef) en el ActorSystem 
+ 	actorSystem.stop(anActor)
+ - context.stop(actorRef) dentro del actor
+ 	context.stop(childActor)
+ 
+Otra de las maneras de detener a un actor:
+ - enviar al actor PoisonPill
+ 	actor ! PoisonPill
+ - programar un gracefulStop
+ 
+stop method --> The actor will continue to process its current message (if any), but no additional messages will be
+processed. See additional notes in the paragraphs that follow.
+
+PoisonPill message --> A PoisonPill message will stop an actor when the message is processed. A PoisonPill
+message is queued just like an ordinary message and will be handled after other messages queued
+ahead of it in its mailbox.
+
+gracefulStop method --> Lets you attempt to terminate actors gracefully, waiting for them to timeout. The documentation
+states that this is a good way to terminate actors in a specific order.

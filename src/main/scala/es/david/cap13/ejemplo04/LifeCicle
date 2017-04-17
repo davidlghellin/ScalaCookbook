@@ -1,0 +1,25 @@
+Queremos crear actores mas complejos, para ello necesitamos entender cuando los metodos de un Actor
+son llamados
+
+- receive
+- preStart
+- postStop
+- preRestart
+- postRestart
+
+The actor’s constructor --> An actor’s constructor is called just like any other Scala class constructor, when an instance of the class
+is first created.
+
+preStart --> Called right after the actor is started. During restarts it’s called by the default implementation of
+postRestart .
+
+postStop -->Called after an actor is stopped, it can be used to perform any needed cleanup work. According to the
+Akka documentation, this hook “is guaranteed to run after message queuing has been disabled for this
+actor.”
+
+preRestart --> According to the Akka documentation, when an actor is restarted, the old actor is informed of the process
+when preRestart is called with the exception that caused the restart, and the message that triggered
+the exception. The message may be None if the restart was not caused by processing a message.
+
+postRestart --> The postRestart method of the new actor is invoked with the exception that caused the restart. In
+the default implementation, the preStart method is called.
