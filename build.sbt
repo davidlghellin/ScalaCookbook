@@ -21,5 +21,17 @@ libraryDependencies +=
 libraryDependencies += 
 	"mysql" % "mysql-connector-java" % "5.1.18"
    
-libraryDependencies += 	"org.mariadb.jdbc" % "mariadb-java-client" % "1.1.7"
+libraryDependencies += 	
+	"org.mariadb.jdbc" % "mariadb-java-client" % "1.1.7"
+
+
+// Pruebas Slick
+libraryDependencies += 	
+	"com.typesafe.slick" %% "slick" % "3.2.0"
+
+lazy val myConf = settingKey[Config]("The application properties")
+
+myConf := {
+    ConfigFactory.parseFile(new File("src/main/resources/application.conf"))
+}
   
